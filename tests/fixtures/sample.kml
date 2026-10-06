@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Sample Test Data</name>
+    <Placemark>
+      <name>Sample Point</name>
+      <ExtendedData>
+        <Data name="category"><value>landmark</value></Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>-122.0822035425683,37.42228990140251,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Sample Line</name>
+      <LineString>
+        <coordinates>
+          -122.084075,37.421997,0
+          -122.080649,37.419278,0
+          -122.078559,37.421739,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Sample Polygon</name>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -122.0859,37.4220,0
+              -122.0859,37.4100,0
+              -122.0820,37.4100,0
+              -122.0820,37.4220,0
+              -122.0859,37.4220,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>
