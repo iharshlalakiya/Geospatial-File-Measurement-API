@@ -259,24 +259,6 @@ latitude/longitude degrees. The strategy used here:
   `list[...]`, no `match`/`case`, no walrus operator — for broader
   interpreter compatibility.
 
-## Learnings
-
-- Pinning `shapely`/`fiona`/`pyproj` without pinning `numpy` is a trap on a
-  fresh environment: `pip` resolved `numpy 2.x`, but `shapely==2.0.2`'s
-  compiled extension was built against the NumPy 1.x C ABI, which surfaced
-  as a cryptic `AttributeError: _ARRAY_API not found` only at import time,
-  not at install time. The fix was pinning `numpy<2` explicitly in
-  `requirements.txt` — a good reminder that for the scientific-Python
-  stack, transitive version pins matter as much as direct ones.
-- KML's coordinate order (`lon,lat[,alt]`) is easy to transpose with
-  Shapefile/GeoJSON conventions if you're not careful; writing a small
-  dedicated parser instead of trusting a generic library made this
-  explicit and testable rather than implicit.
-- Choosing `always_xy=True` on the `pyproj.Transformer` matters — without
-  it, transform behavior depends on whether a given CRS's authority
-  defines axis order as (lat, lon) or (lon, lat), which is a classic,
-  easy-to-miss source of silently-wrong area/length numbers.
-
 ## Future Scope
 
 - Move file processing to a background worker (Celery/RQ/FastAPI
